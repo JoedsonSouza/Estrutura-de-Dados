@@ -1,6 +1,11 @@
-vetor = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+import array
+vetor = array.array("i", [0]*10)
 numeroConvertido = []
 numBinario = []
+
+for i in range(0,10):
+    x = int(input("DIGITE UM NÚMERO:"))
+    vetor[i] = x
 
 for i in range(0, 10):
     binario = []
