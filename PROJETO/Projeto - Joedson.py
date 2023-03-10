@@ -96,8 +96,10 @@ if opcao == 1:
         print(f"Palavra encontrada! Localizada na linha {x+1}")
 elif opcao == 2:
     selectionSort(L)
+    print("Dados ordenados com sucesso!")
 else:
     quickSort(L)
+    print("Dados ordenados com sucesso!")
 
 dadosOrdenados = open('ordenados.txt', 'w')
 for i in range(len(L)):
