@@ -58,7 +58,7 @@ def arquivos(L):
         fileName = input(f"Nome do {i+1}° arquivo: ")
         arquivo = open(fileName + '.txt', 'r')
         for j in arquivo:
-            L.append(j)
+            L.append(j.replace("\n",""))
         arquivo.close()
     print("")
     
@@ -83,7 +83,6 @@ opcao = int(input("Opção escolhida:"))
 
 if opcao == 1:
     busca = input("Digite a palavra que procura: ")
-    busca = busca + '\n'
     metodoOrdenacao()
     ordenar = int(input("Opção escolhida:"))
     if ordenar == 1:
@@ -102,7 +101,7 @@ else:
 
 dadosOrdenados = open('ordenados.txt', 'w')
 for i in range(len(L)):
-    dadosOrdenados.write(L[i])
+    dadosOrdenados.write(f'{L[i]}\n')
 dadosOrdenados.close()
 
 
