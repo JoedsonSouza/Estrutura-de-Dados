@@ -1,3 +1,4 @@
+
 def insertionSort(L):
     for i in range(1, len(L)):
         j = 0
@@ -13,7 +14,15 @@ for i in range(0, 10):
     L.append(x)
 insertionSort(L)
 
+removidos = []
 for i in range(0, len(L)-1):
     if(L[i] == L[i+1]):
         L.pop(i)
-print(L)
+        L.insert(i, '')
+
+for i in range(0, len(L)):
+    if(L[i] != ''):
+        removidos.append(L[i])
+
+for i in range(0, len(removidos)):
+    print(removidos[i])
