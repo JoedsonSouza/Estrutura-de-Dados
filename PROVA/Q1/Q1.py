@@ -5,7 +5,6 @@ def insertionSort(L):
               j = j+1
         val = L.pop(i)
         L.insert(j, val)
-    print(L)
 
 def quickSort(L, ini, fim):
     if(fim>ini):
@@ -27,26 +26,48 @@ def partition(L, ini, fim):
 def linha(L, L1, x):
     for i in range(x, len(L), 4):
         L1.append(L[i])
+        
+def qtdMedalhas(L, L1, x):
+    for i in range(x, len(L), 4):
+        L1.append(int(L[i]))
 
 nomeArquivo = input("Nome do arquivo:")
 arquivo = open(nomeArquivo + '.txt', 'r')
 L = []
 nome = []
 ouro = []
+ouro2 = []
 prata = []
 bronze = []
+
 for i in arquivo:
     L.append(i)
 linha(L, nome, 0)
-linha(L, ouro, 1)
-linha(L, prata, 2)
-linha(L, bronze, 3)
+qtdMedalhas(L, ouro, 1)
+qtdMedalhas(L, ouro2, 1)
+qtdMedalhas(L, prata, 2)
+qtdMedalhas(L, bronze, 3)
 
-maiorOuro = ouro[0]
-pMaiorOuro = 0
-for i in range(0, len(L)):
-    if ouro[i] > maiorOuro:
-        maiorOuro = ouro[i]
-        pMaiorOuro = i
-print(maiorOuro)
-print(pMaiorOuro)
+maiorOuro = max(ouro)   #identifica qual o maior valor
+pMaiorOuro = ouro.index(maiorOuro)  #verifica a posição do maior valor dentro da lista ouro.
+
+Ordenado = []
+nomeOrd = []
+prataOrd = []
+bronzeOrd = []
+
+if ouro.count(maiorOuro) == 1:   #se o maior valor aparecer apenas 1 vez, já temos um campeão. Se não, é preciso utilizar outra forma de validar a vitória 
+    insertionSort(ouro2)
+    for i in range(0, len(ouro2)):
+        pos = ouro.index(ouro2[i])   #verifica qual a posição do valor atual na lista original
+        nomeOrd.append(nome[pos])   #adiciona o nome referente ao valor da medalha na nova lista ordenada
+        prataOrd.append(prata[pos])
+        bronzeOrd.append(bronze[pos])
+else:
+    #preciso verificar apenas dentre os valores emapatados em med de ouro, qual tem a maior qtd de medalhas de prata.
+    
+print(nomeOrd)
+print(ouro2)
+print(prataOrd)
+print(bronzeOrd)
+
